@@ -1,0 +1,23 @@
+{
+  "name": "crypto-lietuva",
+  "version": "1.0.0",
+  "description": "Modern crypto community platform",
+  "main": "index.js",
+  "scripts": {
+    "install-all": "npm install && npm install --prefix backend && npm install --prefix frontend && npm install --prefix bot",
+    "start": "concurrently \"npm run start:backend\" \"npm run start:frontend\" \"npm run start:bot\"",
+    "start:backend": "npm --prefix backend start",
+    "start:frontend": "npm --prefix frontend run dev",
+    "start:bot": "npm --prefix bot start"
+  },
+  "keywords": [
+    "crypto",
+    "chat",
+    "signals"
+  ],
+  "author": "Jules",
+  "license": "ISC",
+  "dependencies": {
+    "concurrently": "^8.2.2"
+  }
+}
