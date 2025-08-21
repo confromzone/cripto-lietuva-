@@ -1,49 +1,25 @@
 import React from 'react';
-import { Routes, Route, Link } from 'react-router-dom';
+import { Routes, Route, NavLink, Navigate } from 'react-router-dom';
 import Chat from './pages/Chat';
 import Signals from './pages/Signals';
 import Charts from './pages/Charts';
 
 function App() {
   return (
-    <div>
+    <div className="app-container">
       <nav>
-        <Link to="/chat">Chat</Link>
-        <Link to="/signals">Signalai</Link>
-        <Link to="/charts">Grafikai</Link>
+        <NavLink to="/chat">Chat</NavLink>
+        <NavLink to="/signals">Signalai</NavLink>
+        <NavLink to="/charts">Grafikai</NavLink>
       </nav>
       <main>
         <Routes>
           <Route path="/chat" element={<Chat />} />
           <Route path="/signals" element={<Signals />} />
           <Route path="/charts" element={<Charts />} />
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<Navigate to="/chat" />} />
         </Routes>
       </main>
-      <style>{`
-        nav {
-          display: flex;
-          gap: 1rem;
-          padding: 1rem;
-          background-color: #333;
-        }
-        nav a {
-          color: white;
-          text-decoration: none;
-        }
-        main {
-          padding: 1rem;
-        }
-      `}</style>
-    </div>
-  );
-}
-
-function Home() {
-  return (
-    <div>
-      <h1>Sveiki atvykę į Crypto Lietuva!</h1>
-      <p>Pasirinkite puslapį iš navigacijos meniu.</p>
     </div>
   );
 }

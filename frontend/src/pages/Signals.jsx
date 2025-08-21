@@ -17,37 +17,28 @@ export default function Signals() {
   }, []);
 
   return (
-    <div>
+    <div className="signals-container">
       <h1>Prekybos Signalai</h1>
-      <div className="signal-list">
+      <div className="signals-list">
         {signals.length === 0 ? (
-          <p>Kol kas signalų nėra. Laukiama...</p>
+          <p className="no-signals-message">Kol kas signalų nėra. Laukiama...</p>
         ) : (
           signals.map((signal, index) => (
-            <div key={index} className="signal">
-              <p><strong>Valiutų Pora:</strong> {signal.pair}</p>
-              <p><strong>Signalas:</strong> {signal.action}</p>
-              <p><strong>Kaina:</strong> {signal.price}</p>
-              <p><em>Data: {new Date().toLocaleString()}</em></p>
+            <div key={index} className={`signal-card ${signal.action.toLowerCase()}`}>
+              <div className="signal-header">
+                <span className="signal-pair">{signal.pair}</span>
+                <span className="signal-action">{signal.action}</span>
+              </div>
+              <div className="signal-body">
+                <p><strong>Kaina:</strong> {signal.price}</p>
+              </div>
+              <div className="signal-footer">
+                <span>{new Date().toLocaleString()}</span>
+              </div>
             </div>
           ))
         )}
       </div>
-      <style>{`
-        .signal-list {
-          display: flex;
-          flex-direction: column;
-          gap: 1rem;
-        }
-        .signal {
-          border: 1px solid #ccc;
-          padding: 1rem;
-          border-radius: 5px;
-        }
-        .signal p {
-          margin: 0.5rem 0;
-        }
-      `}</style>
     </div>
   );
 }

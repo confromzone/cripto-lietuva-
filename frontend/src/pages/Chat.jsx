@@ -26,21 +26,22 @@ export default function Chat() {
   };
 
   return (
-    <div>
+    <div className="chat-container">
       <h1>Crypto Lietuva Chat</h1>
-      <ul id="messages">
+      <ul className="chat-messages">
         {messages.map((msg, index) => (
-          <li key={index}>{msg}</li>
+          <li key={index} className="message">{msg}</li>
         ))}
       </ul>
-      <form id="form" onSubmit={handleSubmit}>
+      <form className="chat-form" onSubmit={handleSubmit}>
         <input
-          id="input"
+          className="chat-input"
           autoComplete="off"
           value={input}
           onChange={(e) => setInput(e.target.value)}
+          placeholder="Type a message..."
         />
-        <button>Send</button>
+        <button type="submit">Send</button>
       </form>
     </div>
   );
